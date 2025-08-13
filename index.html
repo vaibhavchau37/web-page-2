@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Design Mastery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --secondary: #7209b7;
+            --accent: #f72585;
+            --light: #f8f9fa;
+            --lighter: #ffffff;
+            --dark: #212529;
+            --darker: #121416;
+            --gray: #6c757d;
+            --success: #4cc9f0;
+            --warning: #f8961e;
+            --danger: #ef233c;
+            --border-radius: 12px;
+            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        h1 {
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .main-nav {
+            margin: 2.5rem 0;
+        }
+
+        .main-nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .main-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            background: var(--light);
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .main-nav a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .main-nav a i {
+            font-size: 1rem;
+        }
+
+        .section-card {
+            margin-bottom: 3rem;
+            padding: 2.5rem;
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Typography Section */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .font-card {
+            padding: 1.75rem;
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .font-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-light);
+        }
+
+        .font-card p:first-child {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .font-desc {
+            color: var(--gray);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+        }
+
+        code {
+            display: block;
+            background: rgba(67, 97, 238, 0.05);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin-top: 1rem;
+            border: 1px solid rgba(67, 97, 238, 0.1);
+            color: var(--primary-dark);
+        }
+
+        /* Font Styles */
+        .serif {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #333;
+        }
+
+        .sans-serif {
+            font-family: 'Poppins', sans-serif;
+            color: #444;
+        }
+
+        .monospace {
+            font-family: 'Courier New', Courier, monospace;
+            color: #555;
+        }
+
+        .cursive {
+            font-family: 'Brush Script MT', cursive;
+            color: #d63384;
+        }
+
+        .fantasy {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: var(--primary);
+        }
+
+        .bold {
+            font-weight: 700;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .underline {
+            text-decoration: underline wavy var(--accent);
+        }
+
+        /* Background Section */
+        .background-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .bg-example {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .bg-example h3 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            font-weight: 500;
+        }
+
+        .background-section {
+            height: 180px;
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .background-section:hover {
+            transform: scale(1.02);
+        }
+
+        .background-section p {
+            position: relative;
+            z-index: 2;
+            color: white;
+            font-weight: 500;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 6px;
+            backdrop-filter: blur(2px);
+        }
+
+        .background-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .repeat::before {
+            background: url('https://www.transparenttextures.com/patterns/always-grey.png') repeat;
+        }
+
+        .repeat-x::before {
+            background: url('https://www.transparenttextures.com/patterns/always-grey.png') repeat-x;
+            background-size: 200px 200px;
+        }
+
+        .repeat-y::before {
+            background: url('https://www.transparenttextures.com/patterns/always-grey.png') repeat-y;
+            background-size: 200px 200px;
+        }
+
+        .no-repeat::before {
+            background: url('https://via.placeholder.com/200/4361ee/ffffff') no-repeat center;
+            background-size: contain;
+            opacity: 1;
+        }
+
+        /* Link States Section */
+        .link-states {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .state-card {
+            padding: 2rem 1.5rem;
+            background: var(--lighter);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .state-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-light);
+        }
+
+        .state-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 10px rgba(67, 97, 238, 0.3);
+        }
+
+        .state-desc {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        /* Link Styles */
+        a:link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: white;
+            background-color: var(--primary);
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        a:active {
+            color: white;
+            background-color: var(--accent);
+            transform: scale(0.95);
+        }
+
+        a:visited {
+            color: var(--secondary);
+        }
+
+        /* Visibility Section */
+        .visibility-demo {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .demo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .demo-box {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+            transition: var(--transition);
+        }
+
+        .demo-box:hover {
+            transform: scale(1.05);
+        }
+
+        .demo-box i {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .demo-box p {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        .display-none {
+            display: none;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        .explanation-box {
+            background: var(--lighter);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            margin-top: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .explanation-box h3 {
+            color: var(--primary-dark);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.3rem;
+        }
+
+        .explanation-box ul {
+            list-style-position: inside;
+            line-height: 1.8;
+        }
+
+        .explanation-box li {
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .explanation-box li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--gray);
+        }
+
+        footer i {
+            color: var(--accent);
+            margin: 0 0.25rem;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .section-card {
+                padding: 1.75rem;
+            }
+
+            .grid-container,
+            .link-states {
+                grid-template-columns: 1fr;
+            }
+
+            .visibility-demo {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-paint-brush"></i> CSS Design Mastery</h1>
+            <p class="subtitle">Explore fundamental CSS concepts with interactive examples</p>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#typography"><i class="fas fa-font"></i> Typography</a></li>
+                <li><a href="#backgrounds"><i class="fas fa-image"></i> Backgrounds</a></li>
+                <li><a href="#links"><i class="fas fa-link"></i> Links</a></li>
+                <li><a href="#visibility"><i class="fas fa-eye"></i> Visibility</a></li>
+            </ul>
+        </nav>
+
+        <!-- 1. Font Styles -->
+        <section id="typography" class="section-card">
+            <h2><i class="fas fa-font"></i> 1. Typography Showcase</h2>
+
+            <div class="grid-container">
+                <div class="font-card">
+                    <p class="serif">Serif Font</p>
+                    <p class="font-desc">Elegant and traditional for print-like feel</p>
+                    <code>font-family: Georgia, serif;</code>
+                </div>
+
+                <div class="font-card">
+                    <p class="sans-serif">Sans-Serif Font</p>
+                    <p class="font-desc">Clean and modern for digital interfaces</p>
+                    <code>font-family: 'Poppins', sans-serif;</code>
+                </div>
+
+                <div class="font-card">
+                    <p class="monospace">Monospace Font</p>
+                    <p class="font-desc">Technical and precise for code readability</p>
+                    <code>font-family: 'Courier New', monospace;</code>
+                </div>
+
+                <div class="font-card">
+                    <p class="cursive">Cursive Font</p>
+                    <p class="font-desc">Creative and artistic for decorative text</p>
+                    <code>font-family: 'Brush Script MT', cursive;</code>
+                </div>
+
+                <div class="font-card">
+                    <p class="fantasy">Fantasy Font</p>
+                    <p class="font-desc">Bold and decorative for impactful titles</p>
+                    <code>font-family: Impact, fantasy;</code>
+                </div>
+
+                <div class="font-card">
+                    <p class="bold italic underline">Combined Styles</p>
+                    <p class="font-desc">Mix of bold, italic & underline effects</p>
+                    <code>font-weight: bold;<br>font-style: italic;<br>text-decoration: underline;</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Background Patterns -->
+        <section id="backgrounds" class="section-card">
+            <h2><i class="fas fa-image"></i> 2. Background Repeat Control</h2>
+
+            <div class="background-grid">
+                <div class="bg-example">
+                    <h3>Repeat (default)</h3>
+                    <div class="background-section repeat">
+                        <p>Tiles in both directions</p>
+                    </div>
+                    <code>background-repeat: repeat;</code>
+                </div>
+
+                <div class="bg-example">
+                    <h3>Repeat-X</h3>
+                    <div class="background-section repeat-x">
+                        <p>Horizontal stripes only</p>
+                    </div>
+                    <code>background-repeat: repeat-x;</code>
+                </div>
+
+                <div class="bg-example">
+                    <h3>Repeat-Y</h3>
+                    <div class="background-section repeat-y">
+                        <p>Vertical stripes only</p>
+                    </div>
+                    <code>background-repeat: repeat-y;</code>
+                </div>
+
+                <div class="bg-example">
+                    <h3>No-Repeat</h3>
+                    <div class="background-section no-repeat">
+                        <p>Single centered image</p>
+                    </div>
+                    <code>background-repeat: no-repeat;<br>background-position: center;</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Link States -->
+        <section id="links" class="section-card">
+            <h2><i class="fas fa-link"></i> 3. Interactive Link States</h2>
+
+            <div class="link-states">
+                <div class="state-card">
+                    <div class="state-icon"><i class="fas fa-link"></i></div>
+                    <a href="#unvisited" class="link-normal">Normal Link</a>
+                    <p class="state-desc">Default appearance before interaction</p>
+                    <code>a:link { ... }</code>
+                </div>
+
+                <div class="state-card">
+                    <div class="state-icon"><i class="fas fa-hand-pointer"></i></div>
+                    <a href="#hover" class="link-hover">Hover Effect</a>
+                    <p class="state-desc">When mouse pointer is over link</p>
+                    <code>a:hover { ... }</code>
+                </div>
+
+                <div class="state-card">
+                    <div class="state-icon"><i class="fas fa-mouse"></i></div>
+                    <a href="#active" class="link-active">Active State</a>
+                    <p class="state-desc">While link is being clicked</p>
+                    <code>a:active { ... }</code>
+                </div>
+
+                <div class="state-card">
+                    <div class="state-icon"><i class="fas fa-check"></i></div>
+                    <a href="https://example.com" class="link-visited">Visited Link</a>
+                    <p class="state-desc">After link has been clicked</p>
+                    <code>a:visited { ... }</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Visibility Demo -->
+        <section id="visibility" class="section-card">
+            <h2><i class="fas fa-eye"></i> 4. Element Visibility</h2>
+
+            <div class="visibility-demo">
+                <div class="demo-container">
+                    <div class="demo-box visible">
+                        <i class="fas fa-eye"></i>
+                        <p>Visible</p>
+                    </div>
+                    <code>visibility: visible;</code>
+                </div>
+
+                <div class="demo-container">
+                    <div class="demo-box hidden">
+                        <i class="fas fa-eye-slash"></i>
+                        <p>Hidden</p>
+                    </div>
+                    <code>visibility: hidden;</code>
+                </div>
+
+                <div class="demo-container">
+                    <div class="demo-box display-none">
+                        <i class="fas fa-times"></i>
+                        <p>Display None</p>
+                    </div>
+                    <code>display: none;</code>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn" onclick="toggleVisibility()">
+                    <i class="fas fa-toggle-on"></i> Toggle Visibility
+                </button>
+                <button class="btn" onclick="toggleDisplay()">
+                    <i class="fas fa-toggle-on"></i> Toggle Display
+                </button>
+                <button class="btn" onclick="resetVisibility()">
+                    <i class="fas fa-redo"></i> Reset All
+                </button>
+            </div>
+
+            <div class="explanation-box">
+                <h3><i class="fas fa-lightbulb"></i> Key Differences:</h3>
+                <ul>
+                    <li><strong>visibility: hidden</strong> - Element is hidden but still occupies space in layout</li>
+                    <li><strong>display: none</strong> - Element is completely removed from document flow</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>Created with <i class="fas fa-heart"></i> for CSS learners</p>
+            <p class="copyright">© 2023 CSS Design Mastery</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleVisibility() {
+            const box = document.querySelector('.hidden');
+            if (box.style.visibility === 'hidden') {
+                box.style.visibility = 'visible';
+                box.querySelector('p').textContent = 'Now Visible';
+            } else {
+                box.style.visibility = 'hidden';
+                box.querySelector('p').textContent = 'Hidden';
+            }
+        }
+
+        function toggleDisplay() {
+            const box = document.querySelector('.display-none');
+            if (box.style.display === 'none') {
+                box.style.display = 'flex';
+                box.querySelector('p').textContent = 'Now Showing';
+            } else {
+                box.style.display = 'none';
+                box.querySelector('p').textContent = 'Display None';
+            }
+        }
+
+        function resetVisibility() {
+            document.querySelector('.hidden').style.visibility = 'hidden';
+            document.querySelector('.hidden p').textContent = 'Hidden';
+            document.querySelector('.display-none').style.display = 'flex';
+            document.querySelector('.display-none p').textContent = 'Display None';
+        }
+    </script>
+</body>
+
+</html>
