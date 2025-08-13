@@ -6,7 +6,7 @@ CSS-Design-Mastery/
 
 🚀 How to Run the Project
 Clone the repository
-git clone https://github.com/your-username/css-design-mastery.git
+git clone https://github.com/vaibhavchau37/css-design-mastery.git
 
 Navigate to the project folder
 cd css-design-mastery
