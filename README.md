@@ -12,17 +12,13 @@ Navigate to the project folder
 cd css-design-mastery
 
 Open the index.html file in any modern browser.
+
 📚 Concepts Covered
 ✅ CSS Variables & Custom Properties
-
 ✅ Typography (Serif, Sans-serif, Monospace, Cursive, Fantasy)
-
 ✅ Background properties: repeat, repeat-x, repeat-y, no-repeat
-
 ✅ Link states: a:link, a:hover, a:active, a:visited
-
 ✅ Visibility vs Display (visibility: hidden vs display: none)
-
 ✅ Responsive Design with Flexbox & CSS Grid
 
 
